@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Executive Delegation Checklist &amp; Workload Audit | Pareto Talent</title>
+<meta name="description" content="Tick the tasks you handle each week and get your Top 10 tasks to hand off first, with an estimate of the hours and value at stake.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Karla:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#2563EB;--navy:#1E3A8A;--gray:#64748B;--ink:#0F172A;--line:#E2E8F0;--soft:#F1F5F9;--green:#059669;--amber:#E0973F}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:400 17px/1.6 Inter,system-ui,sans-serif;color:var(--ink);background:#fff}
+h1,h2,h3{font-family:Karla,Inter,sans-serif;font-weight:700;color:var(--blue);line-height:1.15;margin:0 0 12px}
+h1{font-size:clamp(30px,5vw,44px)}h2{font-size:clamp(24px,3.6vw,32px)}h3{font-size:19px;color:var(--navy)}
+p{margin:0 0 14px}.muted{color:var(--gray);font-size:15px}
+.w{max-width:1000px;margin:0 auto;padding:0 20px}
+section{padding:52px 0}
+header.top{padding:18px 0;border-bottom:1px solid var(--line);background:#fff}
+header.top b{font:700 22px Karla,sans-serif;color:var(--navy)}
+.btn{display:inline-block;background:var(--blue);color:#fff;font-weight:600;text-decoration:none;padding:14px 24px;border-radius:10px;border:0;cursor:pointer;font-size:16px;font-family:inherit;transition:background .2s}
+.btn:hover{background:var(--navy)}
+.btn.ghost{background:#fff;color:var(--blue);border:2px solid var(--blue)}
+.btn.ghost:hover{background:var(--soft)}
+.btn.sm{padding:9px 16px;font-size:14px}
+input[type=number],input[type=text],textarea{font:inherit;color:inherit;border:1px solid var(--line);border-radius:8px;padding:9px 11px;width:100%;background:#fff}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:6px}
+.card{border:1px solid var(--line);border-radius:14px;padding:22px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.sticky{position:sticky;top:12px}
+.tally{border:2px solid var(--blue);border-radius:14px;padding:22px;background:#fff}
+.tally .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.tally .row:last-of-type{border-bottom:0}
+.tally b{font:700 30px Karla,sans-serif;color:var(--navy);display:block;line-height:1.1}
+.tally .lab{font-size:14px;color:var(--gray)}
+.tally .est{font-size:12px;color:var(--gray);margin-top:6px}
+.cat{border-top:1px solid var(--line);padding:26px 0}
+.cat:first-of-type{border-top:0}
+.task{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:start;padding:13px 0;border-bottom:1px solid #F1F5F9}
+.task:last-child{border-bottom:0}
+.task label.name{display:block;font-weight:600;cursor:pointer;padding-top:5px}
+.task .how{font-size:14px;color:var(--gray);margin:4px 0 0;display:none}
+.task.on .how{display:block}
+.task .hinput{width:88px;flex:none}
+.task .hinput label{font-size:12px;color:var(--gray);display:block;margin-bottom:3px}
+.bucket{display:none;gap:6px;flex:none;flex-wrap:wrap}
+.task.on .bucket{display:flex}
+.bucket button{font:600 13px Inter,sans-serif;padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:#fff;cursor:pointer;color:var(--gray)}
+.bucket button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.bucket button[data-b=anyone][aria-pressed=true]{background:var(--green);border-color:var(--green)}
+.bucket button[data-b=only][aria-pressed=true]{background:var(--amber);border-color:var(--amber)}
+.est-note{background:var(--soft);border-left:4px solid var(--blue);padding:14px 18px;border-radius:0 10px 10px 0;margin:20px 0;font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:Karla,Inter,sans-serif;color:var(--navy);font-size:15px}
+td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+ol.top10{padding-left:0;margin:0;list-style:none;counter-reset:t}
+ol.top10 li{counter-increment:t;display:grid;grid-template-columns:auto 1fr;gap:14px;padding:15px 0;border-bottom:1px solid var(--line)}
+ol.top10 li:before{content:counter(t);display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font:700 15px Karla,sans-serif}
+ol.top10 .tag{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:99px;margin:2px 6px 0 0}
+.tag.anyone{background:#ECFDF5;color:#065F46}.tag.trainable{background:#EFF6FF;color:#1E3A8A}.tag.only{background:#FDF6EC;color:#92400E}
+.empty{color:var(--gray);font-size:15px;padding:18px 0}
+.bar{height:8px;background:var(--soft);border-radius:99px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--blue)}
+footer{padding:28px 0;color:var(--gray);font-size:14px;border-top:1px solid var(--line)}
+[hidden]{display:none!important}
+@media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr}.sticky{position:static}.task{grid-template-columns:auto 1fr}.task .hinput{grid-column:2;width:120px}.task .bucket{grid-column:2}}
+@media print{
+  header.top,.noprint,footer .btn{display:none}
+  body{font-size:11.5pt}
+  section{padding:14px 0;break-inside:avoid}
+  .card,.tally,.cat,ol.top10 li{break-inside:avoid;border:1px solid #ccc}
+  .tally{border:2px solid #000}
+  a{text-decoration:none;color:#000}
+  .printnote{display:block!important}
+}
+.printnote{display:none;border:2px solid #000;border-radius:8px;padding:12px;margin:0 0 18px;font-size:12pt}
+</style>
+</head>
+<body>
+<header class="top noprint"><div class="w"><b>Pareto Talent</b></div></header>
+
+<main>
+<section class="noprint">
+  <div class="w">
+    <h1>Executive Delegation Checklist &amp; Workload Audit</h1>
+    <p class="muted" style="font-size:19px;max-width:680px">Tick the tasks you actually handle each week, add the hours, and see which ones should leave your plate first — with an estimate of the time and value they take up.</p>
+    <ul class="muted" style="list-style:none;padding:0;margin:20px 0 0;display:flex;gap:26px;flex-wrap:wrap">
+      <li>✓ Free, no login</li><li>✓ About 15 minutes</li><li>✓ Runs in your browser</li><li>✓ Print or save as PDF</li>
+    </ul>
+    <div class="est-note">
+      <strong>How the estimate works:</strong> for each task you tick, we multiply your weekly hours by how delegable it is — anyone could do it (full weight), someone could do it with training (about two thirds), only you can do it (about a tenth). Then <code>monthly value = value of one hour × delegable hours per week × 4.3</code>. Every number here is an <strong>estimate based on your own answers</strong>, not a promise of results.
+    </div>
+  </div>
+</section>
+
+<section class="noprint" style="padding-top:0">
+  <div class="w">
+    <div class="card" style="display:flex;gap:20px;align-items:flex-end;flex-wrap:wrap;max-width:520px">
+      <div style="flex:1;min-width:200px">
+        <label for="hv" style="font-weight:600;display:block;margin-bottom:6px">What is one hour of your time worth?</label>
+        <p class="muted" style="margin:0 0 8px;font-size:14px">Use your own number. A rough figure is fine.</p>
+        <input type="number" id="hv" min="0" step="10" placeholder="e.g. 200" inputmode="numeric">
+      </div>
+      <p class="muted" style="margin:0;flex:1;min-width:200px">In your currency per hour. If you are not sure, start with what you would have to pay a good operator, or what an hour of your attention is worth in a deal.</p>
+    </div>
+    <p class="muted" style="margin-top:12px">Now go through the list. Tick what you handle, and put your weekly hours on each one. You can change any task's bucket — only you know.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="w">
+    <div class="grid2" style="align-items:start">
+      <div id="catalog"></div>
+      <div class="sticky noprint">
+        <div class="tally">
+          <h3 style="margin-top:0">Your week, so far</h3>
+          <div class="row"><div><span class="lab">Tasks ticked</span></div><b id="t-count">0</b></div>
+          <div class="row"><div><span class="lab">Hours you logged</span></div><b id="t-hours">0</b></div>
+          <div class="row"><div><span class="lab">Delegable hours / week</span><span class="est">estimate</span></div><b id="t-deleg">0</b></div>
+          <div class="row"><div><span class="lab">Est. value per month</span><span class="est">estimate</span></div><b id="t-value">—</b></div>
+          <p class="est" id="t-formula" style="margin-top:14px;display:none"></p>
+          <div id="t-buckets" style="margin-top:18px"></div>
+          <button class="btn sm ghost" id="reset" style="margin-top:18px;width:100%">Clear everything</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="results" hidden>
+  <div class="w">
+    <div class="printnote">This is your Executive Delegation Checklist &amp; Workload Audit. All hours and dollar figures are estimates based on your own answers, not a promise of results.</div>
+
+    <h2>Your Top 10 tasks to hand off first</h2>
+    <p class="muted" id="r-intro"></p>
+    <ol class="top10" id="r-top10"></ol>
+
+    <h2 style="margin-top:48px">Your three buckets</h2>
+    <p class="muted">Anything in the first bucket is a candidate for a Pareto Right Hand. The second bucket is what a trained Right Hand takes off your plate in the first weeks.</p>
+    <div class="grid3" id="r-buckets"></div>
+
+    <h2 style="margin-top:48px">Full breakdown</h2>
+    <table id="r-table">
+      <thead><tr><th>Task</th><th>Category</th><th>Bucket</th><th class="n">Hours/wk</th><th class="n">Delegable</th></tr></thead>
+      <tbody></tbody>
+    </table>
+
+    <h2 style="margin-top:48px">Copy for your email or notes</h2>
+    <p class="muted">Everything above, as plain text.</p>
+    <button class="btn ghost sm noprint" id="copy">Copy summary as text</button>
+    <button class="btn sm noprint" id="print" style="margin-left:10px">Print or save as PDF</button>
+    <textarea id="plain" rows="14" readonly style="margin-top:12px;font-family:ui-monospace,Menlo,monospace;font-size:13px"></textarea>
+  </div>
+</section>
+
+<section class="cta noprint" style="background:var(--navy);color:#fff;padding:56px 0;border-radius:0">
+  <div class="w" style="max-width:760px">
+    <h2 style="color:#fff">If your list shows hours worth handing off</h2>
+    <p style="color:#E2E8F0">Pareto Talent places trained remote Right Hands with founder-led companies. Month-to-month from $3,600/mo. If you book a Matching Call and it's a fit, you get 3 pre-vetted Right Hand profiles within 24 hours and you choose who to interview.</p>
+    <a class="btn" style="background:#fff;color:var(--navy)" href="thanks-qualified.html">Book a Matching Call</a>
+    <p class="muted" style="color:#94A3B8;margin-top:14px;font-size:14px">Three guarantees apply, each with conditions: <strong>Freedom 40</strong> — follow the onboarding plan, and if you don't get 40+ hours back in your first 30 days, your next month is on us. <strong>Matching</strong> — interview your candidates; walk away owing nothing if none fit. <strong>Lifetime Replacement</strong> — re-match at no extra cost if a match stops working.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="w">
+    <p>© Pareto Talent. This tool runs entirely in your browser and stores nothing. Hours and dollar figures are estimates based on your answers, not a promise of results.</p>
+    <p class="noprint" style="margin:0"><a href="https://paretotalent.com">paretotalent.com</a> · <a href="https://www.skool.com/3xf">3X Freedom</a></p>
+  </div>
+</footer>
+
+<script>
+const W={anyone:1,trainable:0.65,only:0.1};
+const BN={anyone:'Anyone could do this',trainable:'Could do this with training',only:'Only I can do this'};
+
+const CATEGORIES=[
+{name:'Sales & pipeline',tasks:[
+ {t:'Log and update every new lead in the CRM',b:'anyone',how:'Write down the five fields you always fill and give a worked example row. Anyone can copy a pattern.'},
+ {t:'Send follow-up emails to leads that went quiet',b:'anyone',how:'Give them three templates and the rule for when to send each one. Volume work, no judgement required.'},
+ {t:'Qualify inbound leads against your criteria',b:'trainable',how:'Turn your criteria into a checklist with pass and fail examples, then have them score ten leads with you.'},
+ {t:'Prepare proposals and quotes',b:'trainable',how:'Keep your best three as a template they fill in. You review the price, they do the assembly.'},
+ {t:'Book discovery calls and confirm meetings',b:'anyone',how:'One calendar link, one confirmation template, one reminder rule. Fully delegable today.'},
+ {t:'Keep the pipeline forecast up to date',b:'trainable',how:'Agree the stages and the definition of each. It is a reporting task once the definitions exist.'},
+ {t:'Research prospects before your call',b:'trainable',how:'A one-page brief template: who they are, what they sell, what they said last time.'}]},
+{name:'Client delivery & coordination',tasks:[
+ {t:'Send weekly client status updates',b:'anyone',how:'Give them your last four updates as the template and a fixed Friday ritual.'},
+ {t:'Take and circulate meeting notes',b:'anyone',how:'A note-taking template with the fields you actually read. Transcription plus tidy-up.'},
+ {t:'Chase people who owe you something',b:'anyone',how:'A list of who owes what, plus a polite chase template and a day of the week.'},
+ {t:'Keep delivery timelines and milestones current',b:'trainable',how:'Move the board out of your head into theirs, with a rule for what gets added and when.'},
+ {t:'Schedule and run recurring client calls',b:'anyone',how:'Booking link plus a recurring calendar entry. Send the recap, keep the relationship.'},
+ {t:'Onboard a new client into your process',b:'trainable',how:'Turn what you do in the first week into a checklist they follow while you observe.'},
+ {t:'Handle routine client questions',b:'trainable',how:'Write the ten questions you get most, with your approved answers.'}]},
+{name:'Marketing & content',tasks:[
+ {t:'Publish posts on your social channels',b:'anyone',how:'A content calendar with two weekly slots and a review step. They draft, you approve.'},
+ {t:'Draft the weekly newsletter',b:'trainable',how:'Give them your last six newsletters as voice examples and a section structure.'},
+ {t:'Repurpose one piece into five posts',b:'trainable',how:'A reformatting checklist per platform. Mechanical once the source piece exists.'},
+ {t:'Brief designers and freelancers',b:'trainable',how:'A creative brief template with the fields you actually judge work by.'},
+ {t:'Update the website copy',b:'trainable',how:'Collect the changes in one place; batch the edits on a single afternoon.'},
+ {t:'Reply to comments and DMs',b:'anyone',how:'A tone guide plus an escalation rule for anything that is not a simple answer.'},
+ {t:'Plan the content calendar',b:'only',how:'Deciding what the business should say is yours. The research and assembly are not.'}]},
+{name:'Admin, finance & legal',tasks:[
+ {t:'Send invoices and follow up on payment',b:'anyone',how:'Invoice template, numbering rule, and a chase schedule. Fully delegable.'},
+ {t:'File and categorize receipts and invoices',b:'anyone',how:'Name them, drop them in folders by month. They can own this end to end.'},
+ {t:'Pay recurring software and vendors',b:'trainable',how:'A list of what is paid when, with a monthly approval step. They execute, you approve.'},
+ {t:'Reconcile the books with the bank',b:'trainable',how:'The matching rules are yours once. After that it is a repeatable monthly task.'},
+ {t:'Track expenses and reimbursements',b:'anyone',how:'A single form, one approver, one payout day.'},
+ {t:'Prepare contracts from your standard template',b:'trainable',how:'Highlight the variable clauses only. Everything else stays boilerplate.'},
+ {t:'Set up and tear down client subscriptions and access',b:'anyone',how:'A checklist per client, start and end. Very delegable, very forgotten.'}]},
+{name:'Inbox & calendar',tasks:[
+ {t:'Triage and answer the routine inbox',b:'anyone',how:'A folder structure plus a list of replies that never need you. Train, then check.'},
+ {t:'Accept, decline and reschedule meetings',b:'anyone',how:'Your scheduling rules written down, with the two cases that always need you flagged.'},
+ {t:'Protect blocks of focus time',b:'trainable',how:'They hold the calendar against your rules. You set the rules once.'},
+ {t:'Send recurring reminders',b:'anyone',how:'List of reminders, timing, and wording. Fully automatable.'},
+ {t:'Book travel and logistics',b:'anyone',how:'Preferences plus a spending limit and a booking account.'},
+ {t:'Coordinate who is in which room or call',b:'anyone',how:'A shared availability view plus a rule for who books what.'},
+ {t:'Decide what your week looks like',b:'only',how:'This is the job. Protect it explicitly or it disappears into the inbox.'}]},
+{name:'Operations & vendors',tasks:[
+ {t:'Manage vendor relationships and renewals',b:'trainable',how:'A vendor sheet with contract dates, notice periods and who to call. They watch the dates.'},
+ {t:'Place and track orders',b:'anyone',how:'An approval threshold, a supplier list and a tracking spreadsheet.'},
+ {t:'Onboard and offboard vendors',b:'trainable',how:'Access checklists and a close-out list per vendor type.'},
+ {t:'Resolve a vendor issue or complaint',b:'trainable',how:'Give them the history and the escalation line. Step in only above a threshold.'},
+ {t:'Compare quotes before you buy',b:'trainable',how:'A scoring sheet so the comparison is a spreadsheet, not an argument.'},
+ {t:'Keep your operations documentation current',b:'trainable',how:'They update the doc when they do the task. Freshness beats a perfect document.'},
+ {t:'Choose which vendors to keep',b:'only',how:'Deciding who is core to the business stays with you.'}]},
+{name:'Hiring & team',tasks:[
+ {t:'Screen applicants against the role brief',b:'trainable',how:'A scorecard built once, then applied. Fairer and faster than you reading them.'},
+ {t:'Schedule interviews',b:'anyone',how:'Booking links, availability, and a confirmation template.'},
+ {t:'Write job descriptions',b:'trainable',how:'You give the outcomes and the non-negotiables; they draft and iterate.'},
+ {t:'Run reference checks',b:'trainable',how:'A standard question set so every candidate is treated the same way.'},
+ {t:'Coordinate onboarding for new hires',b:'trainable',how:'A first-week checklist per role, plus the accounts and introductions they need.'},
+ {t:'Keep the team tracker and HR admin current',b:'anyone',how:'One spreadsheet, one owner, one weekly update.'},
+ {t:'Decide who to hire and what the role is',b:'only',how:'Headcount and role design is a business decision, not an admin one.'}]},
+{name:'Strategy & founder-only work',tasks:[
+ {t:'Decide what the business does next',b:'only',how:'This is the part you cannot hand off. Guard the hours for it deliberately.'},
+ {t:'Think through a big decision',b:'only',how:'Use the operator to set up the options and the data. The decision is yours.'},
+ {t:'Write or revise the positioning',b:'only',how:'They can research and draft. You own the point of view.'},
+ {t:'Prepare for an important conversation',b:'only',how:'They can brief you and prepare the documents. You have the conversation.'},
+ {t:'Review the numbers and set targets',b:'only',how:'The dashboard is theirs to maintain. Choosing the targets is not.'},
+ {t:'Say no to things on your behalf',b:'only',how:'Never fully delegable, but you can pre-approve a list of standing answers.'},
+ {t:'Recover context after time off',b:'only',how:'A handover note and a walkthrough prevent this, but the rebuild is yours.'}]}
+];
+
+const state={hv:0,sel:{}};
+
+function fmt(n){return n.toLocaleString(undefined,{maximumFractionDigits:1})}
+function money(n){
+  const v=Math.round(n);
+  return v.toLocaleString(undefined,{style:'currency',currency:'USD',maximumFractionDigits:0});
+}
+
+function build(){
+  const cat=document.getElementById('catalog');
+  let i=0,html='';
+  CATEGORIES.forEach((c,ci)=>{
+    html+='<div class="cat"><h3>'+c.name+'</h3>';
+    c.tasks.forEach(t=>{
+      const id='t'+i++;
+      html+='<div class="task" data-id="'+id+'">'
+        +'<input type="checkbox" id="'+id+'" aria-label="Include '+t.t.replace(/"/g,'')+'">'
+        +'<div><label class="name" for="'+id+'">'+t.t+'</label>'
+        +'<p class="how">'+t.how+'</p></div>'
+        +'<div style="display:flex;gap:10px;align-items:flex-start">'
+        +'<div class="hinput"><label for="h'+id+'">Hours/wk</label><input type="number" id="h'+id+'" min="0" max="80" step="0.5" value="0" inputmode="decimal" disabled aria-label="Hours per week for '+t.t.replace(/"/g,'')+'"></div>'
+        +'<div class="bucket" role="group" aria-label="Bucket for '+t.t.replace(/"/g,'')+'">'
+          +'<button type="button" data-b="anyone" aria-pressed="false">Anyone</button>'
+          +'<button type="button" data-b="trainable" aria-pressed="false">With training</button>'
+          +'<button type="button" data-b="only" aria-pressed="false">Only me</button>'
+        +'</div></div></div>';
+      state.sel[id]={t:t.t,cat:c.name,h:0,b:t.b,def:t.b};
+    });
+    html+='</div>';
+  });
+  cat.innerHTML=html;
+}
+
+function compute(){
+  const hv=state.hv;
+  const rows=[];
+  Object.keys(state.sel).forEach(id=>{
+    const s=state.sel[id];
+    if(!s.on||!(s.h>0))return;
+    s.bucket=s.b;
+    rows.push({id:id,name:s.t,cat:s.cat,h:s.h,b:s.b,w:s.h*W[s.b],d:s.h*W[s.b]});
+  });
+  rows.sort((a,b)=>b.w-a.w);
+  const logged=rows.reduce((a,r)=>a+r.h,0);
+  const deleg=rows.reduce((a,r)=>a+r.d,0);
+  const value=hv*deleg*4.3;
+  return {rows:rows,logged:logged,deleg:deleg,value:value,hv:hv,top:rows.slice(0,10)};
+}
+
+function paint(){
+  const r=compute();
+  document.getElementById('t-count').textContent=r.rows.length;
+  document.getElementById('t-hours').textContent=fmt(r.logged);
+  document.getElementById('t-deleg').textContent=fmt(r.deleg);
+  document.getElementById('t-value').textContent=r.hv>0?money(r.value):'—';
+  const f=document.getElementById('t-formula');
+  if(r.hv>0&&r.deleg>0){f.style.display='block';f.textContent=money(r.hv)+' × '+fmt(r.deleg)+' h × 4.3 = '+money(r.value)+' per month (estimate)';}
+  else f.style.display='none';
+
+  const bk={anyone:0,trainable:0,only:0};
+  r.rows.forEach(x=>bk[x.b]+=x.d);
+  const tot=bk.anyone+bk.trainable+bk.only||1;
+  document.getElementById('t-buckets').innerHTML=
+    '<div class="lab" style="margin-bottom:10px">Where your delegable hours sit</div>'
+    +['anyone','trainable','only'].map(k=>
+      '<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:14px">'
+      +'<span>'+BN[k]+'</span><b style="font:600 14px Inter,sans-serif">'+fmt(bk[k])+' h</b></div>'
+      +'<div class="bar"><i style="width:'+Math.round(bk[k]/tot*100)+'%"></i></div></div>').join('');
+
+  const res=document.getElementById('results');
+  if(!r.rows.length){res.hidden=true;return;}
+  res.hidden=false;
+
+  document.getElementById('r-intro').textContent='You logged '+fmt(r.logged)+' hours a week across '+r.rows.length
+    +' tasks. '+fmt(r.deleg)+' of those hours look delegable — about '+money(r.value)+' a month at '
+    +money(r.hv)+' an hour. All estimates.';
+
+  document.getElementById('r-top10').innerHTML=r.top.map((x,i)=>
+    '<li><div><strong style="font-size:17px">'+x.name+'</strong>'
+    +'<span class="tag '+x.b+'">'+BN[x.b]+'</span>'
+    +'<span class="tag" style="background:var(--soft);color:var(--gray)">'+x.cat+'</span>'
+    +'<p class="muted" style="margin:9px 0 4px">'+state.sel[x.id].how+'</p>'
+    +'<p class="muted" style="margin:0"><strong>'+fmt(x.h)+' h/wk</strong> logged · <strong>'+fmt(x.d)
+    +' h/wk</strong> delegable</p></div></li>').join('')
+    ||'<li class="empty">Add hours to your ticked tasks to build this list.</li>';
+
+  const order=['anyone','trainable','only'];
+  document.getElementById('r-buckets').innerHTML=order.map(k=>{
+    const list=r.rows.filter(x=>x.b===k).sort((a,b)=>b.d-a.d);
+    return '<div class="card"><h3 style="margin-top:0">'+BN[k]+'</h3>'
+      +'<p class="muted" style="font-size:15px">'+fmt(bk[k])+' delegable hours/wk · '+list.length+' task'+(list.length===1?'':'s')+'</p>'
+      +(list.length?'<ul style="padding-left:18px;margin:0">'+list.slice(0,8).map(x=>'<li style="margin-bottom:6px">'+x.name+'</li>').join('')+'</ul>':'<p class="muted">Nothing here yet.</p>')
+      +'</div>';
+  }).join('');
+
+  document.querySelector('#r-table tbody').innerHTML=r.rows.map(x=>
+    '<tr><td>'+x.name+'</td><td class="muted">'+x.cat+'</td><td>'+BN[x.b]+'</td>'
+    +'<td class="n">'+fmt(x.h)+'</td><td class="n">'+fmt(x.d)+'</td></tr>').join('');
+
+  document.getElementById('plain').value=plain(r);
+}
+
+function plain(r){
+  const L=[];
+  L.push('EXECUTIVE DELEGATION CHECKLIST & WORKLOAD AUDIT');
+  L.push('Pareto Talent — estimates based on your own answers, not a promise of results.');
+  L.push('');
+  L.push('SUMMARY');
+  L.push('  Value of one hour:      '+money(r.hv));
+  L.push('  Hours logged per week:  '+fmt(r.logged));
+  L.push('  Delegable hours/week:   '+fmt(r.deleg)+'   (estimate)');
+  L.push('  Est. value per month:   '+money(r.value)+'   (estimate)');
+  L.push('  Formula: '+money(r.hv)+' x '+fmt(r.deleg)+' x 4.3 = '+money(r.value));
+  L.push('');
+  L.push('TOP 10 TASKS TO HAND OFF FIRST');
+  r.top.forEach((x,i)=>{
+    L.push('  '+(i+1)+'. '+x.name+'  ['+BN[x.b]+', '+x.cat+']');
+    L.push('     '+fmt(x.h)+' h/wk logged, '+fmt(x.d)+' h/wk delegable');
+    L.push('     How: '+state.sel[x.id].how);
+  });
+  L.push('');
+  L.push('FULL BREAKDOWN');
+  r.rows.forEach(x=>{
+    L.push('  - '+x.name);
+    L.push('      '+x.cat+' | '+BN[x.b]+' | '+fmt(x.h)+' h/wk | '+fmt(x.d)+' delegable');
+  });
+  L.push('');
+  L.push('NEXT STEP');
+  L.push('If your Top 10 shows hours worth handing off, book a Matching Call at Pareto Talent.');
+  L.push('Month-to-month from $3,600/mo. If it is a fit you get 3 pre-vetted Right Hand');
+  L.push('profiles within 24 hours and choose who to interview.');
+  L.push('');
+  L.push('Guarantees, each with conditions: Freedom 40 (follow the onboarding plan; if you');
+  L.push('do not get 40+ hours back in your first 30 days, your next month is on us),');
+  L.push('Matching (interview your candidates; walk away owing nothing if none fit), and');
+  L.push('Lifetime Replacement (re-match at no extra cost if a match stops working).');
+  return L.join('\n');
+}
+
+function bind(){
+  const hvEl=document.getElementById('hv');
+  hvEl.addEventListener('input',function(){
+    state.hv=parseFloat(hvEl.value)||0;paint();
+  });
+
+  document.getElementById('catalog').addEventListener('change',function(e){
+    const box=e.target.closest('input[type=checkbox]');
+    if(box){
+      const id=box.id,s=state.sel[id];
+      s.on=box.checked;
+      const hEl=document.getElementById('h'+id);
+      hEl.disabled=!box.checked;
+      if(box.checked&&!(s.h>0)){s.h=1;hEl.value=1;}
+      box.closest('.task').classList.toggle('on',box.checked);
+      setBucketUI(id,s.b);
+      paint();return;
+    }
+    const num=e.target.closest('input[type=number]');
+    if(num&&num.id.startsWith('h')){
+      const id=num.id.slice(1);
+      state.sel[id].h=Math.max(0,parseFloat(num.value)||0);
+      paint();
+    }
+  });
+
+  document.getElementById('catalog').addEventListener('click',function(e){
+    const b=e.target.closest('.bucket button');
+    if(!b)return;
+    const id=b.closest('.task').dataset.id;
+    state.sel[id].b=b.dataset.b;
+    setBucketUI(id,b.dataset.b);
+    paint();
+  });
+
+  document.getElementById('reset').addEventListener('click',function(){
+    Object.keys(state.sel).forEach(id=>{
+      const s=state.sel[id];
+      s.on=false;s.h=0;s.b=s.def;
+      const box=document.getElementById(id);box.checked=false;
+      const h=document.getElementById('h'+id);h.value=0;h.disabled=true;
+      box.closest('.task').classList.remove('on');
+      setBucketUI(id,s.def);
+    });
+    const hvEl=document.getElementById('hv');hvEl.value='';state.hv=0;
+    paint();
+  });
+
+  document.getElementById('print').addEventListener('click',function(){window.print()});
+  document.getElementById('copy').addEventListener('click',function(){
+    const ta=document.getElementById('plain');ta.select();
+    let ok=false;
+    try{ok=document.execCommand('copy')}catch(err){ok=false}
+    if(!ok&&navigator.clipboard){navigator.clipboard.writeText(ta.value).then(function(){
+      this.textContent='Copied';setTimeout(()=>{this.textContent='Copy summary as text'},1800);
+    }.bind(this));return}
+    this.textContent=ok?'Copied':'Select and copy manually';
+    setTimeout(()=>{this.textContent='Copy summary as text'},1800);
+  });
+}
+
+function setBucketUI(id,b){
+  document.querySelectorAll('.task[data-id="'+id+'"] .bucket button').forEach(function(btn){
+    btn.setAttribute('aria-pressed',btn.dataset.b===b?'true':'false');
+  });
+}
+
+build();
+bind();
+document.querySelectorAll('.task').forEach(function(t){
+  const s=state.sel[t.dataset.id];setBucketUI(t.dataset.id,s.b);
+});
+paint();
+</script>
+</body>
+</html>
