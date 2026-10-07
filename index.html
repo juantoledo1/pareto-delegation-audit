@@ -29,8 +29,15 @@ h1{font-size:clamp(32px,5.5vw,48px)}h2{font-size:clamp(26px,4vw,34px)}h3{font-si
 p{margin:0 0 14px}.muted{color:var(--gray);font-size:15px}
 .w{max-width:1080px;margin:0 auto;padding:0 20px}
 section{padding:56px 0}
-header.top{padding:18px 0;border-bottom:1px solid var(--line)}
+header.top{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--line)}
+header.top .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
 header.top b{font:700 22px Karla,sans-serif;color:var(--navy)}
+header.top nav{display:flex;align-items:center;gap:24px}
+.nav-links{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+.nav-links a{color:var(--ink);text-decoration:none;font-size:15px}
+.nav-links a:hover{color:var(--blue)}
+.nav-cta{padding:10px 20px;border-radius:10px;font-size:15px}
+section,#form{scroll-margin-top:76px}
 .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
 .card{border:2px solid var(--blue);border-radius:16px;padding:12px;background:#fff}
 .card iframe{width:100%;min-height:1019px;border:0;border-radius:10px}
@@ -59,12 +66,22 @@ summary{cursor:pointer;font-weight:600}
 .cta h2{color:#fff}.cta .btn{background:#fff;color:var(--navy)}.cta .btn:hover{background:var(--soft)}
 footer{padding:28px 0;color:var(--gray);font-size:14px}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
-@media(max-width:820px){.hero,.two,.steps,.stats,.quotes{grid-template-columns:1fr}section{padding:40px 0}}
+@media(max-width:820px){.hero,.two,.steps,.stats,.quotes{grid-template-columns:1fr}section{padding:40px 0}.nav-links{display:none}header.top nav{gap:12px}.nav-cta{padding:9px 16px;font-size:14px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
 <body>
-<header class="top"><div class="w"><b>Pareto Talent</b></div></header>
+<header class="top"><div class="w bar">
+  <b>Pareto Talent</b>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#what">What you get</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="btn nav-cta" href="#form">Get my free audit</a>
+  </nav>
+</div></header>
 
 <main>
 <section><div class="w hero">
@@ -95,7 +112,7 @@ footer{padding:28px 0;color:var(--gray);font-size:14px}
     <li>You don't plan to get help in the next few months</li></ul></div>
 </div></section>
 
-<section class="proof"><div class="w">
+<section class="proof" id="what"><div class="w">
   <h2>What you get</h2>
   <ul class="ck" style="max-width:640px">
     <li><strong>A 15-minute audit of your week.</strong> See where your hours go.</li>
@@ -105,7 +122,7 @@ footer{padding:28px 0;color:var(--gray);font-size:14px}
   </ul>
 </div></section>
 
-<section><div class="w">
+<section id="how"><div class="w">
   <h2>How it works</h2>
   <ol class="steps">
     <li><h3>Answer 4 quick questions</h3><p>So we can show the right next step.</p></li>
@@ -128,7 +145,7 @@ footer{padding:28px 0;color:var(--gray);font-size:14px}
   </div>
 </div></section>
 
-<section><div class="w" style="max-width:760px">
+<section id="faq"><div class="w" style="max-width:760px">
   <h2>Questions</h2>
   <details><summary>Is it really free?</summary><p>Yes. No credit card.</p></details>
   <details><summary>How long does it take?</summary><p>About 15 minutes.</p></details>
